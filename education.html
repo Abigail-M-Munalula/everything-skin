@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Everything Skin | Clinical Education Hub</title>
+    <style>
+        :root {
+            --navy: #0a192f;
+            --deep-blue: #112240;
+            --light-navy: #233554;
+            --slate: #8892b0;
+            --white: #e6f1ff;
+            --accent: #64ffda;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', 'Segoe UI', sans-serif; }
+        body { background-color: var(--navy); color: var(--slate); line-height: 1.6; }
+
+        /* Sidebar Navigation */
+        nav {
+            position: fixed; left: 0; top: 0; height: 100vh; width: 80px;
+            background: rgba(10, 25, 47, 0.95); backdrop-filter: blur(10px);
+            border-right: 1px solid rgba(255,255,255,0.1);
+            display: flex; flex-direction: column; justify-content: space-between;
+            align-items: center; padding: 40px 0; z-index: 100;
+        }
+        .nav-logo { font-weight: 900; color: var(--white); writing-mode: vertical-rl; text-transform: uppercase; letter-spacing: 5px; font-size: 1rem; }
+        .nav-links { list-style: none; display: flex; flex-direction: column; gap: 30px; }
+        .nav-links a { color: var(--slate); text-decoration: none; font-size: 0.7rem; writing-mode: vertical-rl; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
+        .nav-links a.active { color: var(--accent); border-right: 2px solid var(--accent); }
+        .nav-links a:hover { color: var(--white); }
+
+        .container { margin-left: 80px; padding: 60px 8%; max-width: 1400px; }
+
+        /* Typography */
+        .section-tag { color: var(--accent); font-family: monospace; font-size: 0.8rem; letter-spacing: 3px; display: block; margin-bottom: 10px; text-transform: uppercase; }
+        h1 { color: var(--white); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300; margin-bottom: 40px; }
+        h2 { color: var(--white); margin: 60px 0 30px; font-size: 2rem; display: flex; align-items: center; gap: 15px; }
+        h2::after { content: ""; height: 1px; flex-grow: 1; background: var(--light-navy); }
+
+        /* Skin Type Section */
+        .type-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .type-card { 
+            background: var(--deep-blue); border: 1px solid rgba(255,255,255,0.05); 
+            padding: 40px; position: relative; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .type-card:hover { border-color: var(--accent); transform: translateY(-5px); background: #172a45; }
+        .type-title { color: var(--white); font-size: 1.5rem; margin-bottom: 10px; font-weight: 700; }
+        
+        .type-meta { font-size: 0.7rem; color: var(--accent); text-transform: uppercase; margin-bottom: 15px; font-family: monospace; display: block; border-bottom: 1px solid var(--light-navy); padding-bottom: 10px; }
+        
+        .marker-list { list-style: none; margin: 20px 0; }
+        .marker-list li { font-size: 0.85rem; margin-bottom: 12px; display: flex; flex-direction: column; }
+        .marker-list b { color: var(--white); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; }
+
+        /* Routine Cycle Section */
+        .cycle-box { 
+            display: grid; grid-template-columns: 1fr 1fr; gap: 2px; 
+            background: var(--light-navy); border-radius: 4px; overflow: hidden; 
+        }
+        .cycle-side { background: var(--deep-blue); padding: 40px; }
+        .cycle-side h3 { color: var(--accent); margin-bottom: 20px; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px; }
+
+        /* Ingredient Drawer */
+        .ingredient-list { margin-top: 40px; }
+        .ingredient-row { 
+            border-bottom: 1px solid var(--light-navy); padding: 25px 0; cursor: pointer;
+            display: grid; grid-template-columns: 1fr 2fr 1fr; align-items: center;
+        }
+        .ingredient-row:hover { color: var(--white); background: rgba(255,255,255,0.02); }
+        .ing-name { color: var(--white); font-weight: 700; font-size: 1.2rem; }
+        .ing-detail { font-size: 0.9rem; padding-right: 20px; }
+        .ing-specs { text-align: right; font-family: monospace; font-size: 0.75rem; color: var(--accent); }
+
+        footer { margin-top: 100px; padding: 40px 0; border-top: 1px solid var(--light-navy); text-align: center; }
+
+        @media (max-width: 900px) {
+            nav { width: 100%; height: 60px; flex-direction: row; padding: 0 20px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            .nav-logo { writing-mode: horizontal-tb; }
+            .nav-links { display: none; }
+            .container { margin-left: 0; padding: 100px 5% 60px; }
+            .cycle-box { grid-template-columns: 1fr; }
+            .ingredient-row { grid-template-columns: 1fr; gap: 10px; }
+            .ing-specs { text-align: left; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-logo">ES</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="education.html" class="active">Education</a></li>
+            <li><a href="routine.html">Routine</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+        <div style="font-size: 0.7rem; color: var(--accent);">2026</div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <span class="section-tag">Dermatology / Section 01</span>
+            <h1>The Science of <br><b>Skin Maintenance.</b></h1>
+        </header>
+
+        <!-- SECTION: SKIN BIOLOGY -->
+        <span class="section-tag">Biological Mapping</span>
+        <h2>1.0 Skin Classifications</h2>
+        
+        <div class="type-grid">
+            <!-- OILY -->
+            <div class="type-card">
+                <span class="type-meta">Profile: Hyper-Sebaceous</span>
+                <div class="type-title">Oily Skin</div>
+                <p>An over-secretion of sebum from the glands, leading to "seborrhea." While sebum protects the skin, an excess creates a film that traps debris.</p>
+                <ul class="marker-list">
+                    <li><b>Pore Structure</b>Dilated or "stretched" pores, particularly in the mid-face region.</li>
+                    <li><b>The Advantage</b>Naturally high lipid content provides a stronger defense against environmental aging and fine lines.</li>
+                    <li><b>Primary Stressors</b>Humidity, aggressive surfactants, and hormonal fluctuations.</li>
+                </ul>
+            </div>
+
+            <!-- DRY -->
+            <div class="type-card">
+                <span class="type-meta">Profile: Lipid-Deficient</span>
+                <div class="type-title">Dry Skin</div>
+                <p>True dry skin lacks oil (lipids), not just water. This "alipidic" state means the skin lacks the natural mortar required to hold cells together.</p>
+                <ul class="marker-list">
+                    <li><b>Visual Markers</b>Invisible pores, matte finish, and a tendency toward "crepy" texture or flaking.</li>
+                    <li><b>Sensory</b>A persistent "tight" sensation, especially post-cleansing or in temperature shifts.</li>
+                    <li><b>Primary Stressors</b>Arid climates, central heating, and hot water exposure.</li>
+                </ul>
+            </div>
+
+            <!-- COMBINATION -->
+            <div class="type-card">
+                <span class="type-meta">Profile: Heterogeneous</span>
+                <div class="type-title">Combination</div>
+                <p>A dual-state profile where sebaceous gland density varies. This requires "Zone-Mapping" rather than a uniform treatment approach.</p>
+                <ul class="marker-list">
+                    <li><b>Regionality</b>Hyper-activity in the T-zone (forehead/nose) contrasting with lipid deficiency on the U-zone (cheeks).</li>
+                    <li><b>Seasonal Fluctuations</b>Commonly shifts toward Oily in summer and Dry in winter months.</li>
+                    <li><b>Management Goal</b>Targeted calibration—lightweight gels for the center, rich emollients for the periphery.</li>
+                </ul>
+            </div>
+
+            <!-- SENSITIVE -->
+            <div class="type-card">
+                <span class="type-meta">Profile: Reactive / Impaired</span>
+                <div class="type-title">Sensitive Skin</div>
+                <p>Not just a type, but a state of neuro-sensitivity. The nerve endings are more exposed due to a fractured moisture barrier.</p>
+                <ul class="marker-list">
+                    <li><b>Visual Markers</b>Erythema (redness), broken capillaries, and blotchy texture.</li>
+                    <li><b>Reactivity</b>Immediate stinging or heat sensation when applying standard synthetic fragrances or alcohols.</li>
+                    <li><b>Management Goal</b>Anti-inflammatory protocols focusing on "Cica" and barrier-identical lipids.</li>
+                </ul>
+            </div>
+
+            <!-- NORMAL -->
+            <div class="type-card">
+                <span class="type-meta">Profile: Eudermic</span>
+                <div class="type-title">Normal Skin</div>
+                <p>The dermatological ideal. Sebum and moisture levels are in perfect equilibrium, and the barrier is structurally sound.</p>
+                <ul class="marker-list">
+                    <li><b>Visual Markers</b>Fine pores, smooth texture, and consistent radiance without excess shine.</li>
+                    <li><b>Management Goal</b>Preventative maintenance. Focus on antioxidants and consistent sun protection to maintain the baseline.</li>
+                    <li><b>Note</b>"Normal" skin can still experience dehydration or occasional hormonal congestion.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SECTION: DAILY CYCLES -->
+        <span class="section-tag">Temporal Calibration</span>
+        <h2>2.0 The Daily Cycle</h2>
+        <div class="cycle-box">
+            <div class="cycle-side">
+                <h3>AM: Protect + Prep</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 15px;">Daytime routines focus on defending the skin against environmental pollutants and UV radiation.</p>
+                <ul class="marker-list" style="border: none;">
+                    <li><b>Infusion</b>Antioxidant (Vitamin C/E) to neutralize free radicals.</li>
+                    <li><b>Hydration</b>Lightweight water-binding humectants.</li>
+                    <li><b>Shield</b>Broad-spectrum SPF 30+ (Mandatory for all types).</li>
+                </ul>
+            </div>
+            <div class="cycle-side">
+                <h3>PM: Repair + Renew</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 15px;">Nighttime is the peak phase for cellular regeneration. This is when high-potency actives work best.</p>
+                <ul class="marker-list" style="border: none;">
+                    <li><b>Purify</b>Double-cleansing to remove lipid-soluble pollutants.</li>
+                    <li><b>Correct</b>Targeted treatments (Retinoids or Exfoliating Acids).</li>
+                    <li><b>Seal</b>Heavy-duty barrier creams to support overnight recovery.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SECTION: INGREDIENT DATABASE -->
+        <span class="section-tag">Formulation Data</span>
+        <h2>3.0 Key Active Actives</h2>
+        <div class="ingredient-list">
+            <div class="ingredient-row">
+                <div class="ing-name">Ceramides</div>
+                <div class="ing-detail">Waxy lipid molecules that act as the "mortar" between skin cells, essential for barrier integrity.</div>
+                <div class="ing-specs">BEST FOR: DRY / SENSITIVE<br>USE: PM</div>
+            </div>
+            <div class="ingredient-row">
+                <div class="ing-name">Salicylic Acid</div>
+                <div class="ing-detail">A oil-soluble BHA that penetrates deep into pores to dissolve debris and prevent breakouts.</div>
+                <div class="ing-specs">BEST FOR: OILY / ACNE<br>USE: AM or PM</div>
+            </div>
+            <div class="ingredient-row">
+                <div class="ing-name">Niacinamide</div>
+                <div class="ing-detail">Vitamin B3. Regulates oil, calms redness, and visibly improves enlarged pores.</div>
+                <div class="ing-specs">BEST FOR: ALL TYPES<br>USE: AM/PM</div>
+            </div>
+        </div>
+
+        <footer>
+            <p style="font-size: 0.8rem;">&copy; 2026 EVERYTHING SKIN | BUILT FOR PROFESSIONAL CLARITY</p>
+        </footer>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Everything Skin | Home</title>
+    <style>
+        :root { --navy: #0a192f; --white: #e6f1ff; --slate: #8892b0; --accent: #64ffda; --glass: rgba(17, 34, 64, 0.9); }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: var(--navy); color: var(--slate); overflow-x: hidden; }
+
+        /* Sidebar Nav */
+        nav { position: fixed; left: 0; top: 0; height: 100vh; width: 80px; background: var(--glass); backdrop-filter: blur(10px); border-right: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 40px 0; z-index: 100; }
+        .nav-logo { font-weight: 900; color: var(--white); writing-mode: vertical-rl; text-transform: uppercase; letter-spacing: 5px; }
+        .nav-links { list-style: none; display: flex; flex-direction: column; gap: 30px; }
+        .nav-links a { color: var(--slate); text-decoration: none; font-size: 0.7rem; writing-mode: vertical-rl; text-transform: uppercase; letter-spacing: 2px; }
+        .nav-links a.active { color: var(--accent); border-right: 2px solid var(--accent); }
+
+        /* Hero Styling */
+        .hero { margin-left: 80px; height: 100vh; display: flex; align-items: center; padding: 0 10%; background: linear-gradient(135deg, rgba(10,25,47,0.9) 30%, transparent 100%), url('https://images.unsplash.com/photo-1512132411229-c30391241dd8?auto=format&fit=crop&q=80&w=2000'); background-size: cover; background-position: center; }
+        .hero h1 { font-size: 4.5rem; color: var(--white); line-height: 1.1; }
+        .hero p { max-width: 600px; margin: 20px 0; font-size: 1.1rem; }
+        .btn { padding: 15px 30px; border: 1px solid var(--accent); color: var(--accent); text-decoration: none; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; transition: 0.3s; }
+        .btn:hover { background: rgba(100, 255, 218, 0.1); }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-logo">EVERYTHING SKIN</div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="routine.html">Routine</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+        <div style="font-size: 0.7rem; color: var(--accent);">2026</div>
+    </nav>
+    <header class="hero">
+        <div class="hero-content">
+            <h1 style="font-weight: 300;">THE ART OF <br><span style="font-weight: 800;">RADIANCE.</span></h1>
+            <p>A professional platform providing informed skincare routines and sustainable beauty practices through natural ingredient education.</p>
+            <a href="routine.html" class="btn">Start Your Routine</a>
+        </div>
+    </header>
+</body>
+</html>

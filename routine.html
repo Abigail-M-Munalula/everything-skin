@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Everything Skin | Routine Calibration</title>
+    <style>
+        :root { 
+            --navy: #0a192f; 
+            --deep-blue: #112240; 
+            --light-navy: #233554;
+            --white: #e6f1ff; 
+            --slate: #8892b0; 
+            --accent: #64ffda; 
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', 'Segoe UI', sans-serif; }
+        body { background-color: var(--navy); color: var(--slate); line-height: 1.6; }
+
+        /* Shared Sidebar */
+        nav { 
+            position: fixed; left: 0; top: 0; height: 100vh; width: 80px; 
+            background: rgba(10, 25, 47, 0.95); backdrop-filter: blur(10px);
+            border-right: 1px solid rgba(255,255,255,0.1); 
+            display: flex; flex-direction: column; justify-content: space-between; 
+            align-items: center; padding: 40px 0; z-index: 100;
+        }
+        .nav-logo { font-weight: 900; color: var(--white); writing-mode: vertical-rl; text-transform: uppercase; letter-spacing: 5px; }
+        .nav-links { list-style: none; display: flex; flex-direction: column; gap: 30px; }
+        .nav-links a { color: var(--slate); text-decoration: none; font-size: 0.7rem; writing-mode: vertical-rl; text-transform: uppercase; letter-spacing: 2px; }
+        .nav-links a.active { color: var(--accent); border-right: 2px solid var(--accent); }
+
+        .container { margin-left: 80px; padding: 80px 10%; max-width: 1200px; }
+        
+        .section-tag { color: var(--accent); font-family: monospace; font-size: 0.8rem; letter-spacing: 3px; display: block; margin-bottom: 10px; text-transform: uppercase; }
+        h1 { color: var(--white); font-size: 3rem; margin-bottom: 40px; font-weight: 300; }
+        h1 b { font-weight: 800; }
+
+        /* Selector Styling */
+        .selector-box { 
+            background: var(--deep-blue); padding: 40px; border-radius: 4px; 
+            border: 1px solid rgba(255,255,255,0.05); margin-bottom: 40px;
+        }
+        .btn-group { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 20px; }
+        
+        .btn { 
+            padding: 15px 25px; border: 1px solid var(--accent); color: var(--accent); 
+            background: transparent; cursor: pointer; transition: 0.3s; 
+            font-family: monospace; text-transform: uppercase; font-size: 0.8rem;
+        }
+        .btn:hover, .btn.active { background: rgba(100, 255, 218, 0.1); color: var(--white); border-color: var(--white); }
+
+        /* Protocol Result Display */
+        #routine-display { display: none; animation: fadeIn 0.5s ease forwards; }
+        
+        .routine-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px; }
+        .cycle-card { background: var(--light-navy); padding: 30px; border-radius: 4px; }
+        .cycle-card h3 { color: var(--accent); font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+        
+        .step { margin-bottom: 20px; position: relative; padding-left: 30px; }
+        .step::before { content: attr(data-step); position: absolute; left: 0; color: var(--accent); font-family: monospace; font-weight: bold; }
+        .step-name { color: var(--white); font-weight: 700; display: block; font-size: 0.9rem; }
+        .step-desc { font-size: 0.8rem; color: var(--slate); }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 768px) {
+            .routine-grid { grid-template-columns: 1fr; }
+            .container { margin-left: 0; padding-top: 120px; }
+            nav { width: 100%; height: 60px; flex-direction: row; padding: 0 20px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            .nav-logo { writing-mode: horizontal-tb; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-logo">ES</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="routine.html" class="active">Routine</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+        <div style="font-size: 0.7rem; color: var(--accent);">2026</div>
+    </nav>
+
+    <div class="container">
+        <span class="section-tag">System / Calibration</span>
+        <h1>Routine <b>Architecture.</b></h1>
+
+        <div class="selector-box">
+            <p>Select your primary physiological concern to generate a clinical protocol:</p>
+            <div class="btn-group">
+                <button class="btn" onclick="generateRoutine('dry')">Dryness / Alipidic</button>
+                <button class="btn" onclick="generateRoutine('oily')">Oiliness / Sebaceous</button>
+                <button class="btn" onclick="generateRoutine('aging')">Aging / Renewal</button>
+            </div>
+        </div>
+
+        <div id="routine-display">
+            <h2 id="routine-title" style="color: var(--white); margin-bottom: 10px;">Protocol Name</h2>
+            <p id="routine-intro" style="margin-bottom: 30px; font-size: 0.9rem;"></p>
+
+            <div class="routine-grid">
+                <!-- AM Side -->
+                <div class="cycle-card">
+                    <h3>AM: Protect & Prep</h3>
+                    <div id="am-steps"></div>
+                </div>
+
+                <!-- PM Side -->
+                <div class="cycle-card">
+                    <h3>PM: Repair & Treat</h3>
+                    <div id="pm-steps"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const routines = {
+            dry: {
+                title: "Lipid-Replenishment Protocol",
+                intro: "Focused on restoring the moisture barrier and preventing trans-epidermal water loss.",
+                am: [
+                    { name: "Cream Cleanser", desc: "Non-foaming to preserve natural lipids." },
+                    { name: "Hyaluronic Acid", desc: "Apply to damp skin for maximum hydration." },
+                    { name: "Ceramide SPF 30+", desc: "Moisturizing shield against UV." }
+                ],
+                pm: [
+                    { name: "Milk Cleanser", desc: "Gently remove impurities." },
+                    { name: "Squalane Oil", desc: "Biomimetic oil for deep repair." },
+                    { name: "Rich Emollient", desc: "Seal with a heavy-duty night cream." }
+                ]
+            },
+            oily: {
+                title: "Sebum-Regulating Protocol",
+                intro: "Focused on deep pore clarification and balancing oil-water levels.",
+                am: [
+                    { name: "Salicylic Cleanser", desc: "Dissolves debris within the pores." },
+                    { name: "Niacinamide Serum", desc: "Regulates sebaceous activity." },
+                    { name: "Gel-Based SPF", desc: "Oil-free, weightless protection." }
+                ],
+                pm: [
+                    { name: "Double Cleanse", desc: "Oil cleanser followed by foaming gel." },
+                    { name: "Retinoid Treatment", desc: "Accelerates cell turnover and prevents congestion." },
+                    { name: "Water Cream", desc: "Breathable hydration." }
+                ]
+            },
+            aging: {
+                title: "Cellular Renewal Protocol",
+                intro: "Focused on collagen synthesis and correcting environmental oxidative damage.",
+                am: [
+                    { name: "Antioxidant Wash", desc: "Refresh and prep for actives." },
+                    { name: "Vitamin C (15%)", desc: "Neutralize free radicals and brighten." },
+                    { name: "Peptide SPF", desc: "Firms skin while protecting." }
+                ],
+                pm: [
+                    { name: "Enzyme Cleanser", desc: "Gently exfoliates dead cells." },
+                    { name: "Tretinoin/Retinol", desc: "The gold standard for DNA repair." },
+                    { name: "Night Recovery Balm", desc: "Support the skin's regenerative cycle." }
+                ]
+            }
+        };
+
+        function generateRoutine(type) {
+            const data = routines[type];
+            document.getElementById('routine-display').style.display = 'block';
+            document.getElementById('routine-title').innerText = data.title;
+            document.getElementById('routine-intro').innerText = data.intro;
+
+            const renderSteps = (steps, elementId) => {
+                const container = document.getElementById(elementId);
+                container.innerHTML = '';
+                steps.forEach((step, index) => {
+                    container.innerHTML += `
+                        <div class="step" data-step="0${index + 1}">
+                            <span class="step-name">${step.name}</span>
+                            <span class="step-desc">${step.desc}</span>
+                        </div>
+                    `;
+                });
+            };
+
+            renderSteps(data.am, 'am-steps');
+            renderSteps(data.pm, 'pm-steps');
+
+            // Scroll to result
+            document.getElementById('routine-display').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
