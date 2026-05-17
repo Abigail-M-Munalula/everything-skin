@@ -28,7 +28,7 @@
             background-repeat: no-repeat;
         }
 
-        /* Fixed Horizontal Navigation Bar */
+        /* --- RESPONSIVE HORIZONTAL NAVIGATION --- */
         nav { 
             position: fixed; 
             top: 0; 
@@ -50,20 +50,20 @@
             color: var(--warm-grey); 
             text-transform: uppercase; 
             letter-spacing: 3px; 
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 4vw, 1.2rem); /* Scales down smoothly on small screens */
         }
 
         .nav-links { 
             list-style: none; 
             display: flex; 
-            gap: 40px; 
+            gap: clamp(15px, 3vw, 40px); /* Brings links closer together dynamically */
             align-items: center;
         }
 
         .nav-links a { 
             color: var(--medium-grey); 
             text-decoration: none; 
-            font-size: 0.8rem; 
+            font-size: clamp(0.7rem, 2vw, 0.8rem); 
             text-transform: uppercase; 
             letter-spacing: 2px; 
             font-family: monospace;
@@ -90,62 +90,99 @@
             width: 100%; 
         }
 
-        /* Hero Layout */
+        .nav-status {
+            font-size: 0.75rem; 
+            color: var(--sage-green); 
+            font-weight: bold; 
+            font-family: monospace; 
+            letter-spacing: 1px;
+        }
+
+        /* --- RESPONSIVE HERO LAYOUT --- */
         .hero { 
-            height: 100vh; 
+            min-height: 100vh; /* Ensures content fits vertically even on short screens */
             display: flex; 
             align-items: center; 
-            padding: 0 10%; 
+            padding: 120px 8% 60px; /* Top padding leaves space for navigation bar */
             background: transparent; 
         }
 
         .hero-content {
-            max-width: 800px;
-            margin-top: 80px; 
+            max-width: 750px;
+            width: 100%;
         }
 
         .hero h1 { 
-            font-size: 4.5rem; 
+            font-size: clamp(2.5rem, 7vw, 4.5rem); /* Dynamic text sizing rule */
             color: var(--warm-grey); 
             line-height: 1.1; 
         }
 
         .hero p { 
             max-width: 600px; 
-            margin: 25px 0 35px; 
-            font-size: 1.1rem; 
+            margin: clamp(15px, 4vw, 25px) 0 clamp(25px, 5vw, 35px); 
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem); 
             color: var(--medium-grey); 
+            line-height: 1.6;
         }
 
-        /* --- UPDATED: SOLID COLOR BUTTON --- */
         .btn { 
-            padding: 16px 36px; 
-            background-color: var(--sage-green); /* Solid background fill */
-            color: var(--warm-white); /* High contrast light text */
+            padding: clamp(12px, 2.5vw, 16px) clamp(24px, 5vw, 36px); 
+            background-color: var(--sage-green); 
+            color: var(--warm-white); 
             border: 1px solid var(--sage-green); 
             text-decoration: none; 
             text-transform: uppercase; 
-            font-size: 0.85rem; 
+            font-size: clamp(0.75rem, 2vw, 0.85rem); 
             letter-spacing: 2px; 
             font-weight: 600;
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
             display: inline-block;
             box-shadow: 0 4px 12px rgba(140, 166, 138, 0.25);
+            text-align: center;
         }
 
         .btn:hover { 
-            background-color: var(--warm-grey); /* Sophisticated switch to your dark slate grey */
+            background-color: var(--warm-grey); 
             border-color: var(--warm-grey);
             color: var(--warm-white);
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(74, 74, 74, 0.2);
         }
 
+        /* --- MOBILE SCREEN MEDIA QUERY BREAKPOINT --- */
         @media (max-width: 768px) {
-            nav { padding: 0 5%; }
-            .nav-links { display: none; } 
-            .hero { padding: 0 5%; }
-            .hero h1 { font-size: 3rem; }
+            nav { 
+                padding: 0 4%; 
+                height: 70px;
+            }
+            
+            .nav-status { 
+                display: none; /* Frees space on tiny header strips */
+            }
+
+            .hero { 
+                padding: 100px 5% 40px; 
+                align-items: center; 
+                text-align: center; /* Centers alignment for mobile aesthetics */
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .btn {
+                width: 100%; /* Makes button punchy and easy to tap with a thumb */
+                max-width: 320px;
+            }
+        }
+
+        /* Extra consideration for ultra-small or narrow mobile views */
+        @media (max-width: 480px) {
+            .nav-links { gap: 10px; }
+            .nav-links a { letter-spacing: 1px; font-size: 0.65rem; }
+            .hero h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -159,12 +196,11 @@
             <li><a href="routine.html">Routine</a></li>
             <li><a href="about.html">About</a></li>
         </ul>
-
     </nav>
 
     <header class="hero">
         <div class="hero-content">
-            <h1 style="font-weight: 300;">Where science meets <br><span style="font-weight: 800;">sustainable radiance.</span></h1>
+            <h1 style="font-weight: 300;">Where science meets <br><span style="font-weight: 800;">sustainable radince.</span></h1>
             <p>A professional platform providing informed skincare routines and sustainable beauty practices through natural ingredient education.</p>
             <a href="education.html" class="btn">Get educated</a>
         </div>
