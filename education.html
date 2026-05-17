@@ -6,220 +6,450 @@
     <title>Everything Skin | Clinical Education Hub</title>
     <style>
         :root {
-            --navy: #0a192f;
-            --deep-blue: #112240;
-            --light-navy: #233554;
-            --slate: #8892b0;
-            --white: #e6f1ff;
-            --accent: #64ffda;
+            /* Colors from your specific palette */
+            --soft-cream: #F9F6F0; 
+            --warm-white: #FFF9F9;
+            --warm-grey: #4A4A4A;
+            --medium-grey: #5A5A5A;
+            --sage-green: #8CA68A;
+            --glass: rgba(255, 249, 249, 0.95); 
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', 'Segoe UI', sans-serif; }
-        body { background-color: var(--navy); color: var(--slate); line-height: 1.6; }
-
-        /* Sidebar Navigation */
-        nav {
-            position: fixed; left: 0; top: 0; height: 100vh; width: 80px;
-            background: rgba(10, 25, 47, 0.95); backdrop-filter: blur(10px);
-            border-right: 1px solid rgba(255,255,255,0.1);
-            display: flex; flex-direction: column; justify-content: space-between;
-            align-items: center; padding: 40px 0; z-index: 100;
-        }
-        .nav-logo { font-weight: 900; color: var(--white); writing-mode: vertical-rl; text-transform: uppercase; letter-spacing: 5px; font-size: 1rem; }
-        .nav-links { list-style: none; display: flex; flex-direction: column; gap: 30px; }
-        .nav-links a { color: var(--slate); text-decoration: none; font-size: 0.7rem; writing-mode: vertical-rl; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
-        .nav-links a.active { color: var(--accent); border-right: 2px solid var(--accent); }
-        .nav-links a:hover { color: var(--white); }
-
-        .container { margin-left: 80px; padding: 60px 8%; max-width: 1400px; }
-
-        /* Typography */
-        .section-tag { color: var(--accent); font-family: monospace; font-size: 0.8rem; letter-spacing: 3px; display: block; margin-bottom: 10px; text-transform: uppercase; }
-        h1 { color: var(--white); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300; margin-bottom: 40px; }
-        h2 { color: var(--white); margin: 60px 0 30px; font-size: 2rem; display: flex; align-items: center; gap: 15px; }
-        h2::after { content: ""; height: 1px; flex-grow: 1; background: var(--light-navy); }
-
-        /* Skin Type Section */
-        .type-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
-        .type-card { 
-            background: var(--deep-blue); border: 1px solid rgba(255,255,255,0.05); 
-            padding: 40px; position: relative; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .type-card:hover { border-color: var(--accent); transform: translateY(-5px); background: #172a45; }
-        .type-title { color: var(--white); font-size: 1.5rem; margin-bottom: 10px; font-weight: 700; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
         
-        .type-meta { font-size: 0.7rem; color: var(--accent); text-transform: uppercase; margin-bottom: 15px; font-family: monospace; display: block; border-bottom: 1px solid var(--light-navy); padding-bottom: 10px; }
-        
-        .marker-list { list-style: none; margin: 20px 0; }
-        .marker-list li { font-size: 0.85rem; margin-bottom: 12px; display: flex; flex-direction: column; }
-        .marker-list b { color: var(--white); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; }
-
-        /* Routine Cycle Section */
-        .cycle-box { 
-            display: grid; grid-template-columns: 1fr 1fr; gap: 2px; 
-            background: var(--light-navy); border-radius: 4px; overflow: hidden; 
+        body { 
+            background-color: var(--soft-cream); 
+            color: var(--medium-grey); 
+            line-height: 1.6;
+            background-image: linear-gradient(rgba(249, 246, 240, 0.8), rgba(249, 246, 240, 0.8)), url('PHOTOS/LABEL.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
         }
-        .cycle-side { background: var(--deep-blue); padding: 40px; }
-        .cycle-side h3 { color: var(--accent); margin-bottom: 20px; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px; }
 
-        /* Ingredient Drawer */
-        .ingredient-list { margin-top: 40px; }
+        /* --- RESPONSIVE HORIZONTAL NAVIGATION --- */
+        nav { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 80px; 
+            background: var(--glass); 
+            backdrop-filter: blur(10px); 
+            border-bottom: 1px solid rgba(74, 74, 74, 0.1); 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 0 6%; 
+            z-index: 1000; 
+        }
+
+        .nav-logo { 
+            font-weight: 900; 
+            color: var(--warm-grey); 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            font-size: clamp(1rem, 4vw, 1.2rem);
+        }
+
+        .nav-links { 
+            list-style: none; 
+            display: flex; 
+            gap: clamp(15px, 3vw, 40px); 
+            align-items: center;
+        }
+
+        .nav-links a { 
+            color: var(--medium-grey); 
+            text-decoration: none; 
+            font-size: clamp(0.7rem, 2vw, 0.8rem); 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            font-family: monospace;
+            transition: 0.3s;
+            position: relative;
+            padding: 10px 0;
+        }
+
+        .nav-links a.active, .nav-links a:hover { 
+            color: var(--sage-green); 
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--sage-green);
+            transition: 0.3s;
+        }
+        .nav-links a:hover::after, .nav-links a.active::after { 
+            width: 100%; 
+        }
+
+        /* --- LAYOUT CONTAINER --- */
+        .container { 
+            padding: 140px 8% 80px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+
+        .section-tag { 
+            color: var(--sage-green); 
+            font-family: monospace; 
+            font-size: clamp(0.7rem, 1.8vw, 0.8rem); 
+            letter-spacing: 3px; 
+            display: block; 
+            margin-bottom: 10px; 
+            text-transform: uppercase; 
+            font-weight: bold;
+        }
+
+        h1 { 
+            color: var(--warm-grey); 
+            font-size: clamp(2.2rem, 6vw, 3.8rem); 
+            margin-bottom: 40px; 
+            font-weight: 300; 
+            line-height: 1.2;
+        }
+
+        h2 { 
+            color: var(--warm-grey); 
+            font-size: clamp(1.4rem, 4vw, 2rem); 
+            margin: 60px 0 30px; 
+            font-weight: 400;
+        }
+
+        /* --- GRID INTERFACES --- */
+        .grid-3 { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 25px; 
+        }
+
+        .edu-card { 
+            background: var(--warm-white); 
+            padding: 35px; 
+            border: 1px solid rgba(74, 74, 74, 0.08); 
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+            transition: all 0.3s ease; 
+        }
+
+        .edu-card:hover { 
+            border-color: var(--sage-green); 
+            transform: translateY(-4px); 
+            box-shadow: 0 8px 25px rgba(140, 166, 138, 0.12);
+        }
+
+        .edu-card h3 { 
+            color: var(--warm-grey); 
+            font-size: 1.3rem; 
+            margin-bottom: 15px; 
+            font-weight: 600;
+        }
+
+        .edu-card ul { 
+            list-style-type: none; 
+            margin-top: 15px; 
+        }
+
+        .edu-card li { 
+            margin-bottom: 8px; 
+            font-size: 0.9rem; 
+            position: relative; 
+            padding-left: 15px; 
+        }
+
+        .edu-card li::before { 
+            content: "•"; 
+            color: var(--sage-green); 
+            position: absolute; 
+            left: 0; 
+            font-weight: bold; 
+        }
+
+        /* --- INGREDIENT LIST DATABASE --- */
+        .ingredient-list { 
+            margin-top: 20px; 
+            border-top: 1px solid rgba(74, 74, 74, 0.1); 
+        }
+
         .ingredient-row { 
-            border-bottom: 1px solid var(--light-navy); padding: 25px 0; cursor: pointer;
-            display: grid; grid-template-columns: 1fr 2fr 1fr; align-items: center;
+            display: grid; 
+            grid-template-columns: 1.2fr 2fr 1.2fr; 
+            gap: 20px; 
+            padding: 25px 10px; 
+            border-bottom: 1px solid rgba(74, 74, 74, 0.1); 
+            align-items: center;
         }
-        .ingredient-row:hover { color: var(--white); background: rgba(255,255,255,0.02); }
-        .ing-name { color: var(--white); font-weight: 700; font-size: 1.2rem; }
-        .ing-detail { font-size: 0.9rem; padding-right: 20px; }
-        .ing-specs { text-align: right; font-family: monospace; font-size: 0.75rem; color: var(--accent); }
 
-        footer { margin-top: 100px; padding: 40px 0; border-top: 1px solid var(--light-navy); text-align: center; }
+        .ing-name { color: var(--warm-grey); font-weight: 700; font-size: 1.1rem; }
+        .ing-detail { font-size: 0.95rem; color: var(--medium-grey); }
+        .ing-specs { font-family: monospace; font-size: 0.8rem; color: var(--sage-green); font-weight: bold; }
 
-        @media (max-width: 900px) {
-            nav { width: 100%; height: 60px; flex-direction: row; padding: 0 20px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
-            .nav-logo { writing-mode: horizontal-tb; }
+        /* --- SECTION 3.0: PROTOCOL SELECTOR --- */
+        .selector-box {
+            background: var(--warm-white);
+            padding: 30px;
+            border: 1px solid rgba(74, 74, 74, 0.08);
+            margin-bottom: 30px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-select {
+            padding: 12px 24px;
+            background: transparent;
+            color: var(--medium-grey);
+            border: 1px solid rgba(74, 74, 74, 0.2);
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .btn-select:hover, .btn-select.active {
+            background: var(--sage-green);
+            color: var(--warm-white);
+            border-color: var(--sage-green);
+        }
+
+        .display-panel {
+            background: var(--warm-white);
+            border-left: 3px solid var(--sage-green);
+            padding: 40px;
+            display: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .steps-container-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .routine-step-item {
+            background: var(--soft-cream);
+            padding: 25px;
+            border: 1px solid rgba(74, 74, 74, 0.05);
+        }
+
+        .step-title {
+            color: var(--warm-grey);
+            font-size: 1.1rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(140, 166, 138, 0.3);
+            padding-bottom: 4px;
+        }
+
+        .data-label {
+            display: block;
+            font-family: monospace;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            color: var(--sage-green);
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .step-desc {
+            font-size: 0.9rem;
+            color: var(--medium-grey);
+            display: block;
+            margin-top: 2px;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+        footer { margin-top: 100px; padding: 40px 0; border-top: 1px solid rgba(74, 74, 74, 0.1); text-align: center; }
+        footer p { font-size: 0.8rem; color: var(--medium-grey); }
+
+        /* --- RESPONSIVE MEDIA BREAKPOINTS --- */
+        @media (max-width: 768px) {
+            nav { padding: 0 4%; height: 70px; }
             .nav-links { display: none; }
-            .container { margin-left: 0; padding: 100px 5% 60px; }
-            .cycle-box { grid-template-columns: 1fr; }
-            .ingredient-row { grid-template-columns: 1fr; gap: 10px; }
-            .ing-specs { text-align: left; }
+            .container { padding-top: 110px; padding-left: 5%; padding-right: 5%; }
+            .ingredient-row { grid-template-columns: 1fr; gap: 10px; padding: 20px 5px; }
+            .ing-specs { border-left: 2px solid var(--sage-green); padding-left: 10px; }
+            .selector-box { flex-direction: column; }
+            .btn-select { width: 100%; text-align: center; }
+            .display-panel { padding: 25px; }
+            .steps-container-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="nav-logo">ES</div>
+        <div class="nav-logo">EVERYTHING SKIN</div>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="education.html" class="active">Education</a></li>
             <li><a href="routine.html">Routine</a></li>
             <li><a href="about.html">About</a></li>
         </ul>
-        <div style="font-size: 0.7rem; color: var(--accent);">2026</div>
     </nav>
 
     <div class="container">
-        <header>
-            <span class="section-tag">Dermatology / Section 01</span>
-            <h1>The Science of <br><b>Skin Maintenance.</b></h1>
-        </header>
-
-        <!-- SECTION: SKIN BIOLOGY -->
-        <span class="section-tag">Biological Mapping</span>
-        <h2>1.0 Skin Classifications</h2>
         
-        <div class="type-grid">
-            <!-- OILY -->
-            <div class="type-card">
-                <span class="type-meta">Profile: Hyper-Sebaceous</span>
-                <div class="type-title">Oily Skin</div>
-                <p>An over-secretion of sebum from the glands, leading to "seborrhea." While sebum protects the skin, an excess creates a film that traps debris.</p>
-                <ul class="marker-list">
-                    <li><b>Pore Structure</b>Dilated or "stretched" pores, particularly in the mid-face region.</li>
-                    <li><b>The Advantage</b>Naturally high lipid content provides a stronger defense against environmental aging and fine lines.</li>
-                    <li><b>Primary Stressors</b>Humidity, aggressive surfactants, and hormonal fluctuations.</li>
+        <h1>Your skin's Love Language.</b></h1>
+
+        <h2>1.0 Skin Types</h2>
+        <div class="grid-3">
+            <div class="edu-card">
+                <h3>Oily skin</h3>
+                <p>Characterized by overactive sebaceous glands producing excess lipids. Often presents visible pores and a reflective surface.</p>
+                <ul>
+                    <li>Prone to acne and pore blockages.</li>
+                    <li>Requires targeted sebum regulation.</li>
+                    <li>Resilient, signs of aging develop slower.</li>
                 </ul>
             </div>
-
-            <!-- DRY -->
-            <div class="type-card">
-                <span class="type-meta">Profile: Lipid-Deficient</span>
-                <div class="type-title">Dry Skin</div>
-                <p>True dry skin lacks oil (lipids), not just water. This "alipidic" state means the skin lacks the natural mortar required to hold cells together.</p>
-                <ul class="marker-list">
-                    <li><b>Visual Markers</b>Invisible pores, matte finish, and a tendency toward "crepy" texture or flaking.</li>
-                    <li><b>Sensory</b>A persistent "tight" sensation, especially post-cleansing or in temperature shifts.</li>
-                    <li><b>Primary Stressors</b>Arid climates, central heating, and hot water exposure.</li>
+            <div class="edu-card">
+                <h3>Dry skin</h3>
+                <p>Lacks the natural oil production needed to sustain a healthy moisture barrier. Often feels tight and may show flaky texture.</p>
+                <ul>
+                    <li>High rate of trans-epidermal water loss.</li>
+                    <li>Saves cell integrity via external ceramide lipids.</li>
+                    <li>Prone to fine premature lines.</li>
                 </ul>
             </div>
-
-            <!-- COMBINATION -->
-            <div class="type-card">
-                <span class="type-meta">Profile: Heterogeneous</span>
-                <div class="type-title">Combination</div>
-                <p>A dual-state profile where sebaceous gland density varies. This requires "Zone-Mapping" rather than a uniform treatment approach.</p>
-                <ul class="marker-list">
-                    <li><b>Regionality</b>Hyper-activity in the T-zone (forehead/nose) contrasting with lipid deficiency on the U-zone (cheeks).</li>
-                    <li><b>Seasonal Fluctuations</b>Commonly shifts toward Oily in summer and Dry in winter months.</li>
-                    <li><b>Management Goal</b>Targeted calibration—lightweight gels for the center, rich emollients for the periphery.</li>
-                </ul>
-            </div>
-
-            <!-- SENSITIVE -->
-            <div class="type-card">
-                <span class="type-meta">Profile: Reactive / Impaired</span>
-                <div class="type-title">Sensitive Skin</div>
-                <p>Not just a type, but a state of neuro-sensitivity. The nerve endings are more exposed due to a fractured moisture barrier.</p>
-                <ul class="marker-list">
-                    <li><b>Visual Markers</b>Erythema (redness), broken capillaries, and blotchy texture.</li>
-                    <li><b>Reactivity</b>Immediate stinging or heat sensation when applying standard synthetic fragrances or alcohols.</li>
-                    <li><b>Management Goal</b>Anti-inflammatory protocols focusing on "Cica" and barrier-identical lipids.</li>
-                </ul>
-            </div>
-
-            <!-- NORMAL -->
-            <div class="type-card">
-                <span class="type-meta">Profile: Eudermic</span>
-                <div class="type-title">Normal Skin</div>
-                <p>The dermatological ideal. Sebum and moisture levels are in perfect equilibrium, and the barrier is structurally sound.</p>
-                <ul class="marker-list">
-                    <li><b>Visual Markers</b>Fine pores, smooth texture, and consistent radiance without excess shine.</li>
-                    <li><b>Management Goal</b>Preventative maintenance. Focus on antioxidants and consistent sun protection to maintain the baseline.</li>
-                    <li><b>Note</b>"Normal" skin can still experience dehydration or occasional hormonal congestion.</li>
+            <div class="edu-card">
+                <h3>Sensitive skin</h3>
+                <p>Features an easily compromised stratum corneum layer allowing external irritants to trigger inflammatory pathways readily.</p>
+                <ul>
+                    <li>Exhibits temporary redness or burning.</li>
+                    <li>Demands fragrance-free formulations.</li>
+                    <li>Focuses purely on deep barrier support.</li>
                 </ul>
             </div>
         </div>
 
-        <!-- SECTION: DAILY CYCLES -->
-        <span class="section-tag">Temporal Calibration</span>
-        <h2>2.0 The Daily Cycle</h2>
-        <div class="cycle-box">
-            <div class="cycle-side">
-                <h3>AM: Protect + Prep</h3>
-                <p style="font-size: 0.9rem; margin-bottom: 15px;">Daytime routines focus on defending the skin against environmental pollutants and UV radiation.</p>
-                <ul class="marker-list" style="border: none;">
-                    <li><b>Infusion</b>Antioxidant (Vitamin C/E) to neutralize free radicals.</li>
-                    <li><b>Hydration</b>Lightweight water-binding humectants.</li>
-                    <li><b>Shield</b>Broad-spectrum SPF 30+ (Mandatory for all types).</li>
-                </ul>
-            </div>
-            <div class="cycle-side">
-                <h3>PM: Repair + Renew</h3>
-                <p style="font-size: 0.9rem; margin-bottom: 15px;">Nighttime is the peak phase for cellular regeneration. This is when high-potency actives work best.</p>
-                <ul class="marker-list" style="border: none;">
-                    <li><b>Purify</b>Double-cleansing to remove lipid-soluble pollutants.</li>
-                    <li><b>Correct</b>Targeted treatments (Retinoids or Exfoliating Acids).</li>
-                    <li><b>Seal</b>Heavy-duty barrier creams to support overnight recovery.</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- SECTION: INGREDIENT DATABASE -->
-        <span class="section-tag">Formulation Data</span>
-        <h2>3.0 Key Active Actives</h2>
+       
+        <h2>2.0 Key Ingredients</h2>
         <div class="ingredient-list">
             <div class="ingredient-row">
                 <div class="ing-name">Ceramides</div>
-                <div class="ing-detail">Waxy lipid molecules that act as the "mortar" between skin cells, essential for barrier integrity.</div>
-                <div class="ing-specs">BEST FOR: DRY / SENSITIVE<br>USE: PM</div>
+                <div class="ing-detail">Waxy lipid molecules that act as the "mortar" between skin cells, essential for repairing structural barrier integrity.</div>
+                <div class="ing-specs">BEST FOR: DRY / SENSITIVE<br>USE: PM CYCLE</div>
             </div>
             <div class="ingredient-row">
                 <div class="ing-name">Salicylic Acid</div>
-                <div class="ing-detail">A oil-soluble BHA that penetrates deep into pores to dissolve debris and prevent breakouts.</div>
-                <div class="ing-specs">BEST FOR: OILY / ACNE<br>USE: AM or PM</div>
+                <div class="ing-detail">An oil-soluble Beta Hydroxy Acid (BHA) that penetrates deep into cellular walls to clear trapped lipids and debris.</div>
+                <div class="ing-specs">BEST FOR: OILY / CONGESTED<br>USE: AM OR PM</div>
             </div>
             <div class="ingredient-row">
                 <div class="ing-name">Niacinamide</div>
-                <div class="ing-detail">Vitamin B3. Regulates oil, calms redness, and visibly improves enlarged pores.</div>
-                <div class="ing-specs">BEST FOR: ALL TYPES<br>USE: AM/PM</div>
+                <div class="ing-detail">Vitamin B3 profile. Regulates excessive sebum excretion, soothes micro-redness, and works on structural visibility of pores.</div>
+                <div class="ing-specs">BEST FOR: ALL SKIN TYPES<br>USE: AM & PM</div>
             </div>
         </div>
 
+     
+        <h2>3.0 Routine</h2>
+        
+        <div class="selector-box">
+            <button class="btn-select" onclick="loadProtocol('dry', this)">Dry Skin Routine</button>
+            <button class="btn-select" onclick="loadProtocol('oily', this)">Oily Skin Routine</button>
+            <button class="btn-select" onclick="loadProtocol('combo', this)">Combination Skin Routine</button>
+            <button class="btn-select" onclick="loadProtocol('sensitive', this)">Sensitive Skin Routine</button>
+        </div>
+
+        <div id="protocol-panel" class="display-panel">
+            <h3 id="panel-title" style="color: var(--warm-grey); font-size: 1.6rem; margin-bottom: 5px;">Protocol Title</h3>
+            <p id="panel-intro" style="margin-bottom: 25px; font-style: italic; color: var(--sage-green); font-family: monospace; text-transform: uppercase; font-weight: bold; font-size: 0.85rem; letter-spacing: 0.5px;">Focus: Focus text.</p>
+            
+            <div id="steps-container" class="steps-container-grid">
+                </div>
+        </div>
+
         <footer>
-            <p style="font-size: 0.8rem;">&copy; 2026 EVERYTHING SKIN | BUILT FOR PROFESSIONAL CLARITY</p>
+            <p>&copy; 2026 EVERYTHING SKIN | BUILT FOR PROFESSIONAL CLARITY</p>
         </footer>
     </div>
 
+    <script>
+        const routines = {
+            dry: {
+                title: "Dry Skin Routine",
+                focus: "Restoring moisture and strengthening the skin barrier.",
+                steps: [
+                    { name: "Step 1: Cleanse (Hydrating)", use: "A cream-based, non-foaming cleanser.", why: "It removes impurities without stripping away the skin's natural oils." },
+                    { name: "Step 2: Hydrate (Deep Moisture)", use: "A rich moisturizer containing Hyaluronic Acid or Ceramides.", why: "It locks in deep hydration and repairs the skin barrier." },
+                    { name: "Step 3: Protect (Sunscreen)", use: "A nourishing, broad-spectrum SPF 30+.", why: "Protects dry skin from moisture loss and environmental damage." }
+                ]
+            },
+            oily: {
+                title: "Oily Skin Routine",
+                focus: "Balancing excess sebum (oil) production while keeping skin hydrated.",
+                steps: [
+                    { name: "Step 1: Cleanse (Gel or Foaming)", use: "A gentle gel cleanser (ideally with a mild BHA like Salicylic Acid).", why: "Deeply clears out excess oil and dead skin from the pores." },
+                    { name: "Step 2: Hydrate (Lightweight)", use: "An oil-free, water-based, or gel moisturizer (with Niacinamide).", why: "Dehydrated skin produces more oil to compensate. A gel moisturizer hydrates without clogging pores." },
+                    { name: "Step 3: Protect (Matte Finish)", use: "A lightweight, fluid, or matte-finish SPF 30+.", why: "Protects the skin without adding a greasy or heavy layer." }
+                ]
+            },
+            combo: {
+                title: "Combination Skin Routine",
+                focus: "Balancing the oily T-zone (forehead, nose, chin) while hydrating dry cheeks.",
+                steps: [
+                    { name: "Step 1: Cleanse (Balancing)", use: "A mild, foaming gel cleanser.", why: "It effectively cleanses the oily zones without drying out the rest of the face." },
+                    { name: "Step 2: Hydrate (Smart Moisture)", use: "A lightweight, lotion-textured moisturizer.", why: "Provides enough hydration for dry areas while staying light enough for oily zones." },
+                    { name: "Step 3: Protect (All-Skins SPF)", use: "A weightless, broad-spectrum SPF 30+.", why: "Crucial daily defense that keeps skin texture even and healthy." }
+                ]
+            },
+            sensitive: {
+                title: "Sensitive Skin Routine",
+                focus: "Calming inflammation, reducing redness, and avoiding irritation.",
+                steps: [
+                    { name: "Step 1: Cleanse (Ultra-Gentle)", use: "A fragrance-free, soap-free milky cleanser.", why: "Gently purifies the skin without causing irritation or a tight feeling." },
+                    { name: "Step 2: Hydrate (Calming)", use: "A minimal-ingredient barrier cream (with Centella Asiatica / Cica or Aloe).", why: "Soothes active redness and rebuilds a compromised skin barrier." },
+                    { name: "Step 3: Protect (Mineral SPF)", use: "A physical/mineral sunscreen (containing Zinc Oxide).", why: "Zinc is naturally soothing and sits on top of the skin to block UV rays, rather than absorbing into it, making it much less likely to cause a reaction." }
+                ]
+            }
+        };
+
+        function loadProtocol(key, buttonElement) {
+            // Remove active styles from all dashboard buttons
+            document.querySelectorAll('.btn-select').forEach(btn => btn.classList.remove('active'));
+            buttonElement.classList.add('active');
+
+            const targetData = routines[key];
+            const panel = document.getElementById('protocol-panel');
+            
+            document.getElementById('panel-title').innerHTML = targetData.title;
+            document.getElementById('panel-intro').innerHTML = "Focus: " + targetData.focus;
+
+            // Generate clean structural markup for the steps
+            let stepsHtml = "";
+            targetData.steps.forEach(step => {
+                stepsHtml += `
+                    <div class="routine-step-item">
+                        <span class="step-title">${step.name}</span>
+                        
+                        <span class="data-label">What to use</span>
+                        <span class="step-desc">${step.use}</span>
+                        
+                        <span class="data-label">Why</span>
+                        <span class="step-desc">${step.why}</span>
+                    </div>
+                `;
+            });
+            
+            document.getElementById('steps-container').innerHTML = stepsHtml;
+
+            // Display panel with entry transition
+            panel.style.display = "block";
+        }
+    </script>
 </body>
 </html>
