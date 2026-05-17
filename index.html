@@ -5,26 +5,152 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Everything Skin | Home</title>
     <style>
-        :root { --navy: #0a192f; --white: #e6f1ff; --slate: #8892b0; --accent: #64ffda; --glass: rgba(17, 34, 64, 0.9); }
+        :root { 
+            /* Colors from your specific palette */
+            --soft-cream: #F9F6F0; 
+            --warm-white: #FFF9F9;
+            --warm-grey: #4A4A4A;
+            --medium-grey: #5A5A5A;
+            --sage-green: #8CA68A;
+            --glass: rgba(255, 249, 249, 0.95); 
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background-color: var(--navy); color: var(--slate); overflow-x: hidden; }
 
-        /* Sidebar Nav */
-        nav { position: fixed; left: 0; top: 0; height: 100vh; width: 80px; background: var(--glass); backdrop-filter: blur(10px); border-right: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 40px 0; z-index: 100; }
-        .nav-logo { font-weight: 900; color: var(--white); writing-mode: vertical-rl; text-transform: uppercase; letter-spacing: 5px; }
-        .nav-links { list-style: none; display: flex; flex-direction: column; gap: 30px; }
-        .nav-links a { color: var(--slate); text-decoration: none; font-size: 0.7rem; writing-mode: vertical-rl; text-transform: uppercase; letter-spacing: 2px; }
-        .nav-links a.active { color: var(--accent); border-right: 2px solid var(--accent); }
+        body { 
+            background-color: var(--soft-cream); 
+            color: var(--medium-grey); 
+            overflow-x: hidden;
+            background-image: linear-gradient(rgba(249, 246, 240, 0.8), rgba(249, 246, 240, 0.8)), url('PHOTOS/LABEL.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
 
-        /* Hero Styling */
-        .hero { margin-left: 80px; height: 100vh; display: flex; align-items: center; padding: 0 10%; background: linear-gradient(135deg, rgba(10,25,47,0.9) 30%, transparent 100%), url('https://images.unsplash.com/photo-1512132411229-c30391241dd8?auto=format&fit=crop&q=80&w=2000'); background-size: cover; background-position: center; }
-        .hero h1 { font-size: 4.5rem; color: var(--white); line-height: 1.1; }
-        .hero p { max-width: 600px; margin: 20px 0; font-size: 1.1rem; }
-        .btn { padding: 15px 30px; border: 1px solid var(--accent); color: var(--accent); text-decoration: none; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; transition: 0.3s; }
-        .btn:hover { background: rgba(100, 255, 218, 0.1); }
+        /* Fixed Horizontal Navigation Bar */
+        nav { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 80px; 
+            background: var(--glass); 
+            backdrop-filter: blur(10px); 
+            border-bottom: 1px solid rgba(74, 74, 74, 0.1); 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 0 6%; 
+            z-index: 1000; 
+        }
+
+        .nav-logo { 
+            font-weight: 900; 
+            color: var(--warm-grey); 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            font-size: 1.2rem;
+        }
+
+        .nav-links { 
+            list-style: none; 
+            display: flex; 
+            gap: 40px; 
+            align-items: center;
+        }
+
+        .nav-links a { 
+            color: var(--medium-grey); 
+            text-decoration: none; 
+            font-size: 0.8rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            font-family: monospace;
+            transition: 0.3s;
+            position: relative;
+            padding: 10px 0;
+        }
+
+        .nav-links a.active, .nav-links a:hover { 
+            color: var(--sage-green); 
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--sage-green);
+            transition: 0.3s;
+        }
+        .nav-links a:hover::after, .nav-links a.active::after { 
+            width: 100%; 
+        }
+
+        /* Hero Layout */
+        .hero { 
+            height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            padding: 0 10%; 
+            background: transparent; 
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin-top: 80px; 
+        }
+
+        .hero h1 { 
+            font-size: 4.5rem; 
+            color: var(--warm-grey); 
+            line-height: 1.1; 
+        }
+
+        .hero p { 
+            max-width: 600px; 
+            margin: 25px 0 35px; 
+            font-size: 1.1rem; 
+            color: var(--medium-grey); 
+        }
+
+        /* --- UPDATED: SOLID COLOR BUTTON --- */
+        .btn { 
+            padding: 16px 36px; 
+            background-color: var(--sage-green); /* Solid background fill */
+            color: var(--warm-white); /* High contrast light text */
+            border: 1px solid var(--sage-green); 
+            text-decoration: none; 
+            text-transform: uppercase; 
+            font-size: 0.85rem; 
+            letter-spacing: 2px; 
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
+            display: inline-block;
+            box-shadow: 0 4px 12px rgba(140, 166, 138, 0.25);
+        }
+
+        .btn:hover { 
+            background-color: var(--warm-grey); /* Sophisticated switch to your dark slate grey */
+            border-color: var(--warm-grey);
+            color: var(--warm-white);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(74, 74, 74, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 0 5%; }
+            .nav-links { display: none; } 
+            .hero { padding: 0 5%; }
+            .hero h1 { font-size: 3rem; }
+        }
     </style>
 </head>
 <body>
+
     <nav>
         <div class="nav-logo">EVERYTHING SKIN</div>
         <ul class="nav-links">
@@ -33,14 +159,16 @@
             <li><a href="routine.html">Routine</a></li>
             <li><a href="about.html">About</a></li>
         </ul>
-        <div style="font-size: 0.7rem; color: var(--accent);">2026</div>
+
     </nav>
+
     <header class="hero">
         <div class="hero-content">
-            <h1 style="font-weight: 300;">THE ART OF <br><span style="font-weight: 800;">RADIANCE.</span></h1>
+            <h1 style="font-weight: 300;">Where science meets <br><span style="font-weight: 800;">sustainable radiance.</span></h1>
             <p>A professional platform providing informed skincare routines and sustainable beauty practices through natural ingredient education.</p>
-            <a href="routine.html" class="btn">Start Your Routine</a>
+            <a href="education.html" class="btn">Get educated</a>
         </div>
     </header>
+
 </body>
 </html>
