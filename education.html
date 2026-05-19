@@ -126,7 +126,7 @@
         /* --- GRID INTERFACES --- */
         .grid-3 { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
             gap: 25px; 
         }
 
@@ -146,21 +146,35 @@
 
         .edu-card h3 { 
             color: var(--warm-grey); 
-            font-size: 1.3rem; 
+            font-size: 1.4rem; 
             margin-bottom: 15px; 
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid rgba(74, 74, 74, 0.08);
+            padding-bottom: 5px;
+        }
+
+        .edu-card h4 {
+            font-family: monospace;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            color: var(--sage-green);
+            margin-top: 15px;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
         }
 
         .edu-card ul { 
             list-style-type: none; 
-            margin-top: 15px; 
         }
 
         .edu-card li { 
-            margin-bottom: 8px; 
+            margin-bottom: 6px; 
             font-size: 0.9rem; 
             position: relative; 
             padding-left: 15px; 
+            line-height: 1.4;
         }
 
         .edu-card li::before { 
@@ -294,68 +308,86 @@
         <div class="nav-logo">EVERYTHING SKIN</div>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="education.html" class="active">skin school</a></l>
+            <li><a href="education.html" class="active">Skin School</a></li>
             <li><a href="about.html">About</a></li>
         </ul>
     </nav>
 
     <div class="container">
-        
-        <h1>Your skin's Love Language.</b></h1>
+        <h1>SKIN<b> SCHOOL</b></h1>
 
         <h2>1.0 Skin Types</h2>
         <div class="grid-3">
             <div class="edu-card">
                 <h3>Oily skin</h3>
-                <p>Characterized by overactive sebaceous glands producing excess lipids. Often presents visible pores and a reflective surface.</p>
+                <h4>Characteristics</h4>
                 <ul>
-                    <li>Prone to acne and pore blockages.</li>
-                    <li>Requires targeted sebum regulation.</li>
-                    <li>Resilient, signs of aging develop slower.</li>
+                    <li>Visibly enlarged pores</li>
+                    <li>Prone to acne and blackheads</li>
+                    <li>Thicker texture</li>
+                </ul>
+                <h4>Recommendations</h4>
+                <ul>
+                    <li>Incorporate products with Salicylic Acid (BHA) or Niacinamide (Vitamin B3) to prevent excess oil production</li>
+                    <li>Use gentle, gel-based and oil free products</li>
                 </ul>
             </div>
+
             <div class="edu-card">
                 <h3>Dry skin</h3>
-                <p>Lacks the natural oil production needed to sustain a healthy moisture barrier. Often feels tight and may show flaky texture.</p>
+                <h4>Characteristics</h4>
                 <ul>
-                    <li>High rate of trans-epidermal water loss.</li>
-                    <li>Saves cell integrity via external ceramide lipids.</li>
-                    <li>Prone to fine premature lines.</li>
+                    <li>Dull Complexion</li>
+                    <li>Fine lines or wrinkles</li>
+                    <li>Tight sensation</li>
+                    <li>Lack of sufficient moisture</li>
+                </ul>
+                <h4>Recommendations</h4>
+                <ul>
+                    <li>Avoid harsh or alcohol-based products</li>
+                    <li>Use cream cleansers and moisturizers containing hyaluronic acid, aloe vera, glycerin and shea butter </li>
                 </ul>
             </div>
+
             <div class="edu-card">
                 <h3>Sensitive skin</h3>
-                <p>Features an easily compromised stratum corneum layer allowing external irritants to trigger inflammatory pathways readily.</p>
+                <h4>Characteristics</h4>
                 <ul>
-                    <li>Exhibits temporary redness or burning.</li>
-                    <li>Demands fragrance-free formulations.</li>
-                    <li>Focuses purely on deep barrier support.</li>
+                    <li>Easily react to skin products </li>
+                    <li>Burning or stinging sensation </li>
+                    <li>Prone to dryness or rashes </li>
+                    <li>Thin and delicate texture</li>
+                </ul>
+                <h4>Recommendations</h4>
+                <ul>
+                    <li>Use Hypoallergenic skincare products, with minimal risks of allergic reaction </li>
+                    <li>Incorporate barrier repairing ingredients such as Aloe Vera, Hyaluronic acid and Ceramides</li>
                 </ul>
             </div>
         </div>
 
-       
-        <h2>2.0 Ingredients guide</h2>
+        <span class="section-tag" style="margin-top: 60px;">Formulation Data</span>
+        <h2>2.0 Key Ingredients</h2>
         <div class="ingredient-list">
             <div class="ingredient-row">
-                <div class="ing-name">Ceramides</div>
-                <div class="ing-detail">Waxy lipid molecules that act as the "mortar" between skin cells, essential for repairing structural barrier integrity.</div>
-                <div class="ing-specs">BEST FOR: DRY / SENSITIVE<br>USE: PM CYCLE</div>
+                <div class="ing-name">Vitamin C</div>
+                <div class="ing-detail">Brightens skin, boots collagen production and fades dark spots caued by the sun.</div>
+                <div class="ing-specs">BEST FOR ALL SKIN<br>USE: PM CYCLE</div>
             </div>
             <div class="ingredient-row">
-                <div class="ing-name">Salicylic Acid</div>
-                <div class="ing-detail">An oil-soluble Beta Hydroxy Acid (BHA) that penetrates deep into cellular walls to clear trapped lipids and debris.</div>
-                <div class="ing-specs">BEST FOR: OILY / CONGESTED<br>USE: AM OR PM</div>
+                <div class="ing-name">Vitamin A</div>
+                <div class="ing-detail">Simulates collagen production, reduces ance, treat acne and improve overall texture.</div>
+                <div class="ing-specs">BEST FOR ALL SKIN<br>USE: AM OR PM</div>
             </div>
             <div class="ingredient-row">
-                <div class="ing-name">Niacinamide</div>
-                <div class="ing-detail">Vitamin B3 profile. Regulates excessive sebum excretion, soothes micro-redness, and works on structural visibility of pores.</div>
-                <div class="ing-specs">BEST FOR: ALL SKIN TYPES<br>USE: AM & PM</div>
+                <div class="ing-name">Niacinamide (Vitamin B3)</div>
+                <div class="ing-detail">Regulates oil production and reduces appearance of pores</div>
+                <div class="ing-specs">BEST FOR: ALL SKIN<br>USE: AM & PM</div>
             </div>
         </div>
 
-     
-        <h2>3.0 Routine guide</h2>
+        <span class="section-tag" style="margin-top: 60px;">Clinical Prescriptions</span>
+        <h2>3.0 Routine</h2>
         
         <div class="selector-box">
             <button class="btn-select" onclick="loadProtocol('dry', this)">Dry Skin Routine</button>
