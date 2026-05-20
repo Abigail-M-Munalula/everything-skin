@@ -179,57 +179,72 @@
             transform: scale(1.02);
         }
 
-        .img-caption {
-            font-family: monospace;
-            font-size: 0.75rem;
+        /* --- DUAL CERTIFICATE VIEW BLOCK --- */
+        .cert-gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        /* --- CONTACT SECTION --- */
+        .contact-deck {
+            background: var(--warm-white);
+            border: 1px solid rgba(74, 74, 74, 0.08);
+            padding: 40px;
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .contact-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .contact-card h3 {
+            color: var(--warm-grey);
+            font-size: 1.2rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--sage-green);
-            margin-top: 15px;
-            display: block;
-            font-weight: bold;
+            margin-bottom: 10px;
         }
 
-        /* --- CERTIFICATE VIEW BLOCK --- */
-        .credential-section {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 60px;
-            align-items: center;
-            margin-top: 40px;
-        }
-
-        .cred-details h3 {
-            color: var(--warm-grey);
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-        }
-
-        .cred-details ul {
-            list-style: none;
-            margin-top: 20px;
-        }
-
-        .cred-details li {
-            position: relative;
-            padding-left: 20px;
-            margin-bottom: 12px;
+        .contact-card p {
             font-size: 0.95rem;
+            margin-bottom: 20px;
         }
 
-        .cred-details li::before {
-            content: "✓";
-            color: var(--sage-green);
-            position: absolute;
-            left: 0;
+        .contact-btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: transparent;
+            color: var(--warm-grey);
+            border: 1px solid var(--warm-grey);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-family: monospace;
+            font-size: 0.8rem;
             font-weight: bold;
+            letter-spacing: 1px;
+            transition: 0.3s ease;
+            margin-top: auto;
+        }
+
+        .contact-btn:hover {
+            background: var(--sage-green);
+            color: var(--warm-white);
+            border-color: var(--sage-green);
         }
 
         /* --- RESPONSIVE MEDIA BREAKPOINTS --- */
         @media (max-width: 912px) {
             .profile-grid { grid-template-columns: 1fr; gap: 40px; }
-            .credential-section { grid-template-columns: 1fr; gap: 40px; }
-            .credential-section .image-frame { order: -1; }
+            .cert-gallery-grid { grid-template-columns: 1fr; gap: 40px; }
+            .contact-deck { grid-template-columns: 1fr; gap: 30px; padding: 30px; }
         }
 
         @media (max-width: 768px) {
@@ -254,40 +269,54 @@
     </nav>
 
     <div class="container">
-       
-        <h1>The face<b> behind the science</b></h1>
+        <h1>The Strategic <b>Vision.</b></h1>
 
         <div class="profile-grid">
             <div class="bio-text">
-                <p>Meet <b>Abigail Munalula</b>, a certified Skin Health Expert & Specialist who has spent over four years helping people stop guessing and start understanding their skin better by offering expert advice on products that actually work for each skin type.</p>
+                <p>Meet <b>Abigail Munalula</b>, a Skincare Advisor who has spent over four years helping people stop the guessing game and start loving their routine. She specializes in breaking down product formulations to help you find exactly what works for your specific skin type.</p>
                 
-                <p>Frustrated by the beauty industry's habit of pushing beauty trends and skin care products before education—leading to adverse effects that are damaging to the natural skin barrier—Abigail built this website as a judgment-free classroom.</p>
+                <p>Witnessing how easily people get overwhelmed by shifting beauty trends and complex product lines, Abigail built this website to be an easy-to-follow, judgment-free classroom.</p>
 
-                <p>Her goal is to educate people not only about skin beauty but also focus on promoting healthy beauty practices by offering the right recommendations, ensuring that your approach to barrier maintenance is structurally sound and data-driven.</p>
+                <p>She is passionate about promoting smart, daily beauty habits. By offering straightforward product guidance and focusing on everyday care, she helps you build a solid, dependable routine that keeps your skin looking and feeling its best.</p>
             </div>
 
             <div class="image-frame">
-                <img src="PHOTOS/founder.jpeg" alt="Abigail Munalula - Skin Health Specialist" class="display-img">
-               
+                <img src="PHOTOS/founder.jpeg" alt="Abigail Munalula - Skin Specialist" class="display-img">
             </div>
         </div>
 
-        <h2>2.0 Qualifications</h2>
+        <h2>2.0 Verified Qualifications</h2>
+        <p style="margin-bottom: 20px; max-width: 800px;">Authenticity is the baseline of our educational model. All scientific principles, active formulation profiles, and barrier correction guides presented on Everything Skin are backed by professional, accredited beauty industry standards.</p>
         
-        <div class="credential-section">
-            <div class="cred-details">
-                <h3> Industry Competency</h3>
-                <p>Authenticity is the baseline of our educational model. All scientific principles, active formulation profiles, and barrier correction guides presented on Everything Skin are derived directly from accredited beauty industry standards and scientific research.</p>
-                
-                <ul>
-                    <li>Certified validation of skincare industry standards.</li>
-                    
-                </ul>
+        <div class="cert-gallery-grid">
+            <div class="image-frame">
+                <img src="PHOTOS/certificate.jpeg" alt="Professional Certification One" class="display-img">
             </div>
 
             <div class="image-frame">
-                <img src="PHOTOS/certificate.jpeg" alt="Professional Certification" class="display-img">
-                
+                <img src="PHOTOS/certificate 2.jpeg" alt="Professional Certification Two" class="display-img">
+            </div>
+        </div>
+
+        <h2>3.0 Our Digital Door</h2>
+        
+        <div class="contact-deck">
+            <div class="contact-card">
+                <h3>Contact Us On</h3>
+                <p>call or text us on +260977687303 for futher consultation.</p>
+                <a href="https://wa.me/0977687303" target="_blank" class="contact-btn">Open WhatsApp</a>
+            </div>
+
+            <div class="contact-card">
+                <h3>Email Us On</h3>
+                <p>For strategic partnerships, professional  feedback, or formal  inquiries.</p>
+                <a href="mailto:mutintamunalula@gmail.com" class="contact-btn">mutintamunalula@gmail.com</a>
+            </div>
+
+            <div class="contact-card">
+                <h3>Instagram Hub</h3>
+                <p>Follow our social channel to view daily educational visual clips and skin health tips.</p>
+                <a href="https://instagram.com/" target="https://www.instagram.com/everthing_skin_organics?igsh=ZnVjY3BmODZncTRj&utm_source=qr" class="contact-btn">Visit Our Instagram</a>
             </div>
         </div>
 
